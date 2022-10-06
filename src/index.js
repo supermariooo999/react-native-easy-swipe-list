@@ -17,7 +17,9 @@ const SwipeList = ({
         data, 
         renderItem: RenderItem,
         arrButton,
-        actionPosition
+        actionPosition,
+        onPressItem,
+        onLongPressItem
     }) => {
     
     //////////////////////
@@ -32,6 +34,8 @@ const SwipeList = ({
         return (
             <TouchableWithoutFeedback 
               onPressIn={() => onPressIn(index, arrayRef, prevOpenedRow, setprevOpenedRow)}
+              onPress={onPressItem ? () => onPressItem(item, index) : null}
+              onLongPress={onLongPressItem ? () => onLongPressItem(item, index) : null}
             >
               <SwipeItem 
                 ref={(ref) => arrayRef[index] = ref} 

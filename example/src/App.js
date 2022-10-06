@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import SwipeList from 'react-native-easy-swipe-list';
 
-const renderItem = () => (
+const renderItem = ({ index, item }) => (
   <View style={styles.itemContainer}>
-    <Text>This is My Item</Text>
+      <Text>This is My {item.name}</Text>
   </View>
 );
 
@@ -15,6 +15,16 @@ const handleEdit = (item, index) => {
 
 const handleDelete = (item, index) => {
   console.log('Delete');
+  console.log(item);
+};
+
+const onPressItem = (item, index) => {
+  console.log('onPressItem');
+  console.log(item);
+};
+
+const onLongPressItem = (item, index) => {
+  console.log('onLongPressItem');
   console.log(item);
 };
 
@@ -65,6 +75,8 @@ export default function App(){
         renderItem={renderItem}
         actionPosition="right"
         arrButton={arrButton}
+        onPressItem={onPressItem}
+        onLongPressItem={onLongPressItem}
       />
     </View>
   );
